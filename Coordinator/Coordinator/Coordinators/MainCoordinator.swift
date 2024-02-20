@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
+class MainCoordinator: NSObject, Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
@@ -18,9 +18,9 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
+        navigationController.delegate = self
         let vc = HomeViewController()
         vc.coordinator = self
-        
         navigationController.pushViewController(vc, animated: false)
     }
     
@@ -37,12 +37,27 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func childDidFinish(_ child: Coordinator) {
+    func childDidFinish(_ child: Coordinator?) {
         for (index, coordinator) in childCoordinators.enumerated() {
             if coordinator === child {
                 childCoordinators.remove(at: index)
                 break
             }
+        }
+    }
+    
+}
+
+extension MainCoordinator: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        // The fromController is the view controller before the navigation starts. If it is still there,
+        // the action is a push. Otherwise, it is a pop.
+        guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from), !navigationController.viewControllers.contains(fromViewController)
+        else { return }
+        
+        if let buyViewController = fromViewController as? BuyViewController {
+            childDidFinish(buyViewController.coordinator)
         }
     }
     
