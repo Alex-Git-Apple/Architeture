@@ -11,6 +11,7 @@ import UIKit
 class BuyCoordinator: Coordinator {
     weak var parentCoordinator: MainCoordinator?
     var childCoordinators =  [Coordinator]()
+    var rootVC: UIViewController!
     var navigationController: UINavigationController
     
     init(navigationControlelr: UINavigationController) {
@@ -20,6 +21,7 @@ class BuyCoordinator: Coordinator {
     func start() {
         let vc = BuyViewController()
         vc.coordinator = self
+        rootVC = vc
         navigationController.pushViewController(vc, animated: true)
     }
     

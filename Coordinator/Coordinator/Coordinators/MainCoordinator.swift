@@ -10,7 +10,7 @@ import UIKit
 
 class MainCoordinator: NSObject, Coordinator {
     
-    var childCoordinators: [Coordinator] = []
+    var childRootVCToCoordinator: [UIViewController: Coordinator] = [:]
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -27,8 +27,8 @@ class MainCoordinator: NSObject, Coordinator {
     func buySubscription() {
         let buyCoordinator = BuyCoordinator(navigationControlelr: navigationController)
         buyCoordinator.parentCoordinator = self
-        childCoordinators.append(buyCoordinator)
         buyCoordinator.start()
+        childRootVCToCoordinator[buyCoordinator.rootVC] = buyCoordinator
     }
     
     func createAccount() {
@@ -37,13 +37,9 @@ class MainCoordinator: NSObject, Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func childDidFinish(_ child: Coordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
+    func childDidFinish(_ child: UIViewController) {
+        childRootVCToCoordinator[child] = nil
+        print("Remove child coordinator")
     }
     
 }
@@ -57,7 +53,7 @@ extension MainCoordinator: UINavigationControllerDelegate {
         else { return }
         
         if let buyViewController = fromViewController as? BuyViewController {
-            childDidFinish(buyViewController.coordinator)
+            childDidFinish(buyViewController)
         }
     }
     
