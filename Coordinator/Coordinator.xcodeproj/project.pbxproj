@@ -19,6 +19,7 @@
 		FE757C9F2B81B4F200C214B1 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757C9E2B81B4F200C214B1 /* MainCoordinator.swift */; };
 		FE757CA42B81BA8600C214B1 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CA32B81BA8600C214B1 /* BuyViewController.swift */; };
 		FE757CA62B81BA9200C214B1 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CA52B81BA9200C214B1 /* CreateAccountViewController.swift */; };
+		FE757CA92B8516C800C214B1 /* BuyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CA82B8516C800C214B1 /* BuyCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		FE757C9E2B81B4F200C214B1 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		FE757CA32B81BA8600C214B1 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		FE757CA52B81BA9200C214B1 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		FE757CA82B8516C800C214B1 /* BuyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				FE757C9C2B81B4AF00C214B1 /* Coordinator.swift */,
 				FE757C9E2B81B4F200C214B1 /* MainCoordinator.swift */,
+				FE757CA82B8516C800C214B1 /* BuyCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				FE757CA62B81BA9200C214B1 /* CreateAccountViewController.swift in Sources */,
 				FE757C9D2B81B4AF00C214B1 /* Coordinator.swift in Sources */,
 				FE757C712B81A90800C214B1 /* HomeViewController.swift in Sources */,
+				FE757CA92B8516C800C214B1 /* BuyCoordinator.swift in Sources */,
 				FE757C6D2B81A90800C214B1 /* AppDelegate.swift in Sources */,
 				FE757C9F2B81B4F200C214B1 /* MainCoordinator.swift in Sources */,
 				FE757C6F2B81A90800C214B1 /* SceneDelegate.swift in Sources */,
