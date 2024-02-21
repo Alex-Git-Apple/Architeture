@@ -20,6 +20,7 @@
 		FE757CA42B81BA8600C214B1 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CA32B81BA8600C214B1 /* BuyViewController.swift */; };
 		FE757CA62B81BA9200C214B1 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CA52B81BA9200C214B1 /* CreateAccountViewController.swift */; };
 		FE757CA92B8516C800C214B1 /* BuyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CA82B8516C800C214B1 /* BuyCoordinator.swift */; };
+		FE757CAB2B858EBB00C214B1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CAA2B858EBB00C214B1 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FE757CA32B81BA8600C214B1 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		FE757CA52B81BA9200C214B1 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		FE757CA82B8516C800C214B1 /* BuyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoordinator.swift; sourceTree = "<group>"; };
+		FE757CAA2B858EBB00C214B1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,13 +109,13 @@
 		FE757C6B2B81A90800C214B1 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				FE757C6C2B81A90800C214B1 /* AppDelegate.swift */,
+				FE757C6E2B81A90800C214B1 /* SceneDelegate.swift */,
 				FE757CA72B81C08C00C214B1 /* ViewControllers */,
 				FE757CA22B81B8AE00C214B1 /* Coordinators */,
-				FE757C6E2B81A90800C214B1 /* SceneDelegate.swift */,
 				FE757C752B81A90800C214B1 /* Assets.xcassets */,
 				FE757C772B81A90800C214B1 /* LaunchScreen.storyboard */,
 				FE757C7A2B81A90800C214B1 /* Info.plist */,
-				FE757C6C2B81A90800C214B1 /* AppDelegate.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -151,6 +153,7 @@
 				FE757C702B81A90800C214B1 /* HomeViewController.swift */,
 				FE757CA32B81BA8600C214B1 /* BuyViewController.swift */,
 				FE757CA52B81BA9200C214B1 /* CreateAccountViewController.swift */,
+				FE757CAA2B858EBB00C214B1 /* MainTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			files = (
 				FE757CA62B81BA9200C214B1 /* CreateAccountViewController.swift in Sources */,
 				FE757C9D2B81B4AF00C214B1 /* Coordinator.swift in Sources */,
+				FE757CAB2B858EBB00C214B1 /* MainTabBarController.swift in Sources */,
 				FE757C712B81A90800C214B1 /* HomeViewController.swift in Sources */,
 				FE757CA92B8516C800C214B1 /* BuyCoordinator.swift in Sources */,
 				FE757C6D2B81A90800C214B1 /* AppDelegate.swift in Sources */,
