@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: (Buying & AccountCreating)?
     
     var buyButton: UIButton!
     var createButton: UIButton!

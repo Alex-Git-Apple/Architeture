@@ -24,6 +24,15 @@ class MainCoordinator: NSObject, Coordinator {
         navigationController.pushViewController(vc, animated: false)
     }
     
+    func childDidFinish(_ child: UIViewController) {
+        childRootVCToCoordinator[child] = nil
+        print("Remove child coordinator")
+    }
+    
+}
+
+extension MainCoordinator: Buying, AccountCreating {
+    
     func buySubscription(product: String) {
         let buyCoordinator = BuyCoordinator(navigationControlelr: navigationController)
         buyCoordinator.parentCoordinator = self
@@ -36,11 +45,6 @@ class MainCoordinator: NSObject, Coordinator {
         let vc = CreateAccountViewController()
         vc.coordinator  = self
         navigationController.pushViewController(vc, animated: true)
-    }
-    
-    func childDidFinish(_ child: UIViewController) {
-        childRootVCToCoordinator[child] = nil
-        print("Remove child coordinator")
     }
     
 }

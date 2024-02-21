@@ -21,6 +21,8 @@
 		FE757CA62B81BA9200C214B1 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CA52B81BA9200C214B1 /* CreateAccountViewController.swift */; };
 		FE757CA92B8516C800C214B1 /* BuyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CA82B8516C800C214B1 /* BuyCoordinator.swift */; };
 		FE757CAB2B858EBB00C214B1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CAA2B858EBB00C214B1 /* MainTabBarController.swift */; };
+		FE757CAD2B8595FC00C214B1 /* Buying.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CAC2B8595FC00C214B1 /* Buying.swift */; };
+		FE757CAF2B8596B800C214B1 /* AccountCreating.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE757CAE2B8596B800C214B1 /* AccountCreating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		FE757CA52B81BA9200C214B1 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		FE757CA82B8516C800C214B1 /* BuyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoordinator.swift; sourceTree = "<group>"; };
 		FE757CAA2B858EBB00C214B1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		FE757CAC2B8595FC00C214B1 /* Buying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buying.swift; sourceTree = "<group>"; };
+		FE757CAE2B8596B800C214B1 /* AccountCreating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				FE757C9C2B81B4AF00C214B1 /* Coordinator.swift */,
 				FE757C9E2B81B4F200C214B1 /* MainCoordinator.swift */,
 				FE757CA82B8516C800C214B1 /* BuyCoordinator.swift */,
+				FE757CAC2B8595FC00C214B1 /* Buying.swift */,
+				FE757CAE2B8596B800C214B1 /* AccountCreating.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -289,6 +295,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE757CA62B81BA9200C214B1 /* CreateAccountViewController.swift in Sources */,
+				FE757CAF2B8596B800C214B1 /* AccountCreating.swift in Sources */,
+				FE757CAD2B8595FC00C214B1 /* Buying.swift in Sources */,
 				FE757C9D2B81B4AF00C214B1 /* Coordinator.swift in Sources */,
 				FE757CAB2B858EBB00C214B1 /* MainTabBarController.swift in Sources */,
 				FE757C712B81A90800C214B1 /* HomeViewController.swift in Sources */,
