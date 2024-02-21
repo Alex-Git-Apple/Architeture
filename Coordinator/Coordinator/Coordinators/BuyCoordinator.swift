@@ -13,6 +13,7 @@ class BuyCoordinator: Coordinator {
     var childCoordinators =  [Coordinator]()
     var rootVC: UIViewController!
     var navigationController: UINavigationController
+    var product: String?
     
     init(navigationControlelr: UINavigationController) {
         self.navigationController = navigationControlelr
@@ -20,6 +21,9 @@ class BuyCoordinator: Coordinator {
     
     func start() {
         let vc = BuyViewController()
+        if let product = product {
+            vc.product = product
+        }
         vc.coordinator = self
         rootVC = vc
         navigationController.pushViewController(vc, animated: true)

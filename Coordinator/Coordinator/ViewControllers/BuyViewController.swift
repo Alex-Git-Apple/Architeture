@@ -9,6 +9,8 @@ import UIKit
 
 class BuyViewController: UIViewController {
     weak var coordinator: BuyCoordinator?
+    
+    var product = "Undecided"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,7 @@ class BuyViewController: UIViewController {
     
     func setupLabel() {
         let label = UILabel(frame: .zero)
-        label.text = "Buy"
+        label.text = "Buy " + product
         view.addSubview(label)
         
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -12,16 +12,20 @@ class HomeViewController: UIViewController {
     
     var buyButton: UIButton!
     var createButton: UIButton!
+    let options = ["Option A", "Option B", "Option C"]
+    var productIndex = 1
+    var productControl: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        setUpBuyButton()
-        setUpCreatebutton()
+        setupBuyButton()
+        setupCreatebutton()
+        setupProductControl()
     }
     
-    func setUpBuyButton() {
+    func setupBuyButton() {
         var config = UIButton.Configuration.filled()
         config.title = "Buy"
         buyButton = UIButton(configuration: config)
@@ -36,27 +40,44 @@ class HomeViewController: UIViewController {
         ])
     }
     
-    func setUpCreatebutton() {
+    func setupCreatebutton() {
         var config = UIButton.Configuration.filled()
         config.title = "Create"
         createButton = UIButton(configuration:config)
         
         view.addSubview(createButton)
         createButton.translatesAutoresizingMaskIntoConstraints = false
-        createButton.addTarget(self, action: #selector(createTapped), for: .primaryActionTriggered)
+        createButton.addTarget(self, action: #selector(createAccountTapped), for: .primaryActionTriggered)
         
         NSLayoutConstraint.activate([
             createButton.topAnchor.constraint(equalTo: buyButton.bottomAnchor, constant: 100),
             createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
+    
+    func setupProductControl() {
+        productControl = UISegmentedControl(items: options)
+        productControl.selectedSegmentIndex = productIndex
+        productControl.addTarget(self, action: #selector(selectProduct), for: .primaryActionTriggered)
+        productControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(productControl)
+        NSLayoutConstraint.activate([
+            productControl.topAnchor.constraint(equalTo: createButton.bottomAnchor, constant: 100),
+            productControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
 
     @objc func buyTapped() {
-        coordinator?.buySubscription()
+        coordinator?.buySubscription(product: options[productIndex])
     }
     
-    @objc func createTapped() {
+    @objc func createAccountTapped() {
         coordinator?.createAccount()
+    }
+    
+    @objc func selectProduct(_ sender: UISegmentedControl) {
+        productIndex = sender.selectedSegmentIndex
     }
 
 }
