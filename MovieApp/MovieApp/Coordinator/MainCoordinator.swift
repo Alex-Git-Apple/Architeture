@@ -25,7 +25,7 @@ class MainCoordinator: Coordinator {
     }
     
     func select(_ movie: Movie, indexPath: IndexPath) {
-        let vm = MovieDetailViewModel(movie: movie, indexPath: indexPath)
+        let vm = MovieDetailViewModel(movie: movie)
         vm.listener = mainViewModel
         let vc = MovieDetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)

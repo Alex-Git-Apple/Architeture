@@ -4,7 +4,7 @@
 //
 //  Created by Pin Lu on 2/21/24.
 //
-
+import Combine
 import UIKit
 
 class MovieDetailViewController: UIViewController {
@@ -13,6 +13,7 @@ class MovieDetailViewController: UIViewController {
     var categtoryLabel = UILabel(frame: .zero)
     var likeButton = UIButton()
     var vm: MovieDetailViewModel
+    var subscriptions = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +40,13 @@ class MovieDetailViewController: UIViewController {
         nameLabel.text = vm.name
         categtoryLabel.text = vm.category
         setupButton()
+        setupBinding()
     }
     
     func setupButton() {
         var config = UIButton.Configuration.filled()
         config.title = "Like me"
         
-        config.image = UIImage(systemName: vm.imageName)
         likeButton.configuration = config
         likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .primaryActionTriggered)
     }
@@ -75,8 +76,15 @@ class MovieDetailViewController: UIViewController {
         ])
     }
     
+    func setupBinding() {
+        vm.$likeButtonImage
+            .sink { imageName in
+                self.likeButton.setImage(UIImage(systemName: imageName), for: .normal)
+            }
+            .store(in: &subscriptions)
+    }
+    
     @objc func likeButtonTapped(_ sender: UIButton) {
         vm.updateFavorite()
-        sender.setImage(UIImage(systemName: vm.imageName), for: .normal)
     }
 }

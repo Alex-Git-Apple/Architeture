@@ -7,25 +7,26 @@
 
 import Foundation
 
-class MovieDetailViewModel {
+class MovieDetailViewModel: ObservableObject {
     
+    @Published var likeButtonImage: String = ""
     let id: UUID
     let name: String
     let category: String
-    var favorite: Bool
-    var imageName: String  {
-        favorite ? "heart.fill" : "heart"
+    var favorite: Bool {
+        didSet {
+            likeButtonImage = favorite ? "heart.fill" : "heart"
+        }
     }
-    let indexPath: IndexPath
     
     var listener: FavoriteListener?
     
-    init(movie: Movie, indexPath: IndexPath) {
+    init(movie: Movie) {
         self.id = movie.id
         self.name = movie.name
         self.category = movie.category
         self.favorite = movie.favorite
-        self.indexPath = indexPath
+        self.likeButtonImage = favorite ? "heart.fill" : "heart"
     }
     
     func updateFavorite() {
