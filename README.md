@@ -1,7 +1,7 @@
 # Learn About App Dev Architecture.
 
-- Use coordinator to extract navigation flow.
-- Use ViewModel to extract data and user interaction.
+- Use Coordinator to extract navigation flow.
+- Use ViewModel to store data, view state, and handle user interaction.
 - Try to make the view controller only responsible for displaying views.
 - More complex the app, more isolation we need to.
 
