@@ -14,16 +14,23 @@ class MovieCellViewModel {
     var likeButtonImage: String {
         favorite ? "heart.fill" : "heart"
     }
-    weak var mainVM: MainViewModel?
+    weak var listener: FavoriteListener?
     
-    init(_ movie: Movie, _ mainVM: MainViewModel) {
+    init(_ movie: Movie) {
         name = movie.name
         favorite = movie.favorite
-        self.mainVM = mainVM
     }
     
     func toggleFavorite() {
         favorite.toggle()
-        mainVM?.toogleFavorite(name: name)
+        listener?.favoriteChange(on: name, with: favorite)
+        favoriteOnChange?(name, favorite)
     }
+    
+    var favoriteOnChange: ((String, Bool) -> ())?
+}
+
+protocol FavoriteListener: AnyObject {
+    
+    func favoriteChange(on name: String, with value: Bool)
 }

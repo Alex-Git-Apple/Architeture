@@ -11,30 +11,29 @@ import UIKit
 class MainViewModel {
     
     var movieList = [Movie]()
-    var cellDataSource = [MovieCellViewModel]()
     var indexPaths = [IndexPath]()
     
     func loadData() {
         movieList = [MockData.movie1, MockData.movie2, MockData.movie3]
-        cellDataSource = movieList.map { MovieCellViewModel($0, self) }
     }
     
-    func update(_ indexPath: IndexPath, _ favorite: Bool) {
-        movieList[indexPath.row].favorite = favorite
-        cellDataSource[indexPath.row].favorite = favorite
-        indexPaths.append(indexPath)
-    }
-    
-    func updateViewController(_ completion: @escaping ([IndexPath]) -> () ) {
+    func cellsDidChange(_ completion: @escaping ([IndexPath]) -> () ) {
         completion(indexPaths)
         indexPaths.removeAll()
     }
     
-    func toogleFavorite(name: String) {
+}
+
+// Listen the favorite change
+extension MainViewModel: FavoriteListener {
+    
+    func favoriteChange(on name: String, with value: Bool) {
         for (index, movie) in movieList.enumerated() {
             if movie.name == name {
-                movieList[index].favorite.toggle()
+                movieList[index].favorite = value
+                indexPaths.append(IndexPath(row: index, section: 0))
             }
         }
     }
+    
 }

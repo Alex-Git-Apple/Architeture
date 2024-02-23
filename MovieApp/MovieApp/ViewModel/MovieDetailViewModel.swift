@@ -18,7 +18,7 @@ class MovieDetailViewModel {
     }
     let indexPath: IndexPath
     
-    var coordinator: MainCoordinator?
+    var listener: FavoriteListener?
     
     init(movie: Movie, indexPath: IndexPath) {
         self.id = movie.id
@@ -30,7 +30,7 @@ class MovieDetailViewModel {
     
     func updateFavorite() {
         favorite.toggle()
-        coordinator?.updateFavorite(favorite, indexPath: indexPath)
+        listener?.favoriteChange(on: name, with: favorite)
     }
     
 }

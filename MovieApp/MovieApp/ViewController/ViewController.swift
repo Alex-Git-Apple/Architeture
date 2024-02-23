@@ -33,9 +33,10 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.updateViewController { indexPaths in
+        viewModel.cellsDidChange { indexPaths in
             self.tableView.reloadRows(at: indexPaths, with: .fade)
         }
+        
     }
     
     func setupTableView() {
@@ -62,16 +63,21 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.cellDataSource.count
+        viewModel.movieList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reusedID, for: indexPath) as! MovieCell
-        let cellViewModel = viewModel.cellDataSource[indexPath.row]
+        let movie = viewModel.movieList[indexPath.row]
+        let cellViewModel = MovieCellViewModel(movie)
+//        cellViewModel.listener = viewModel
+        cellViewModel.favoriteOnChange = {(name, favorite) in
+            self.viewModel.favoriteChange(on: name, with: favorite)
+        }
         cell.configure(cellViewModel)
         return cell
     }
-    
+        
 }
 
 extension ViewController: UITableViewDelegate {
@@ -80,4 +86,3 @@ extension ViewController: UITableViewDelegate {
         coordinator?.select(movie, indexPath: indexPath)
     }
 }
-
