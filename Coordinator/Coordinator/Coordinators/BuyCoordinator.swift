@@ -9,27 +9,21 @@ import Foundation
 import UIKit
 
 class BuyCoordinator: Coordinator {
-    weak var parentCoordinator: MainCoordinator?
     var childCoordinators =  [Coordinator]()
     var rootVC: UIViewController!
     var navigationController: UINavigationController
-    var product: String?
+    var product: String
     
-    init(navigationControlelr: UINavigationController) {
+    init(navigationControlelr: UINavigationController, product: String) {
         self.navigationController = navigationControlelr
+        self.product = product
     }
     
     func start() {
         let vc = BuyViewController()
-        if let product = product {
-            vc.product = product
-        }
         vc.coordinator = self
         rootVC = vc
         navigationController.pushViewController(vc, animated: true)
     }
     
-//    func didFinishBuying() {
-//        parentCoordinator?.childDidFinish(self)
-//    }
 }

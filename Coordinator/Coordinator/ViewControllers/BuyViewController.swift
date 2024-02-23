@@ -18,11 +18,6 @@ class BuyViewController: UIViewController {
         setupLabel()
     }
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        coordinator?.didFinishBuying()
-//    }
-    
     func setupLabel() {
         let label = UILabel(frame: .zero)
         label.text = "Buy " + product

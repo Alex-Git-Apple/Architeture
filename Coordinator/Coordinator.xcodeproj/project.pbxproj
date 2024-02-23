@@ -156,10 +156,10 @@
 		FE757CA72B81C08C00C214B1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FE757CAA2B858EBB00C214B1 /* MainTabBarController.swift */,
 				FE757C702B81A90800C214B1 /* HomeViewController.swift */,
 				FE757CA32B81BA8600C214B1 /* BuyViewController.swift */,
 				FE757CA52B81BA9200C214B1 /* CreateAccountViewController.swift */,
-				FE757CAA2B858EBB00C214B1 /* MainTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

@@ -34,9 +34,7 @@ class MainCoordinator: NSObject, Coordinator {
 extension MainCoordinator: Buying, AccountCreating {
     
     func buySubscription(product: String) {
-        let buyCoordinator = BuyCoordinator(navigationControlelr: navigationController)
-        buyCoordinator.parentCoordinator = self
-        buyCoordinator.product = product
+        let buyCoordinator = BuyCoordinator(navigationControlelr: navigationController, product: product)
         buyCoordinator.start()
         childRootVCToCoordinator[buyCoordinator.rootVC] = buyCoordinator
     }
