@@ -5,6 +5,7 @@
 //  Created by Pin Lu on 2/21/24.
 //
 
+import Combine
 import UIKit
 
 class MovieCell: UITableViewCell {
@@ -17,6 +18,8 @@ class MovieCell: UITableViewCell {
     var viewModel: MovieCellViewModel!
     
     var stackView = UIStackView()
+    
+    var subscriptions = Set<AnyCancellable>()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -75,17 +78,20 @@ class MovieCell: UITableViewCell {
     func configure(_ cellViewModel: MovieCellViewModel) {
         viewModel = cellViewModel
         nameLabel.text = viewModel.name
-        setLikeButtonImage()
+        setupBinding()
     }
     
-    func setLikeButtonImage() {
-        likeButton.setImage(UIImage(systemName: viewModel.likeButtonImage), for: .normal)
+    func setupBinding() {
+        viewModel.$likeButtonImage
+            .sink { imageName in
+                self.likeButton.setImage(UIImage(systemName: imageName), for: .normal)
+            }
+            .store(in: &subscriptions)
     }
     
     
     @objc func buttonTap(_ sender: UIButton) {
         viewModel.toggleFavorite()
-        sender.setImage(UIImage(systemName: viewModel.likeButtonImage), for: .normal)
     }
     
 }

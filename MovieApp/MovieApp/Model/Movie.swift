@@ -17,5 +17,5 @@ struct Movie {
 struct MockData {
     static let movie1 = Movie(id: UUID(), name: "Mr. & Mrs. Smith", category: "Action", favorite: false)
     static let movie2 = Movie(id: UUID(), name: "Argylle ", category: "Thriller", favorite: false)
-    static let movie3 = Movie(id: UUID(), name: "How to Have Sex", category: "Drama", favorite: false)
+    static let movie3 = Movie(id: UUID(), name: "How to Have Sex", category: "Drama", favorite: true)
 }

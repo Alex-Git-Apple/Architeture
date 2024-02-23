@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  MovieApp
 //
 //  Created by Pin Lu on 2/21/24.
@@ -7,22 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     let tableView = UITableView(frame: .zero)
-    var viewModel: MainViewModel
+    var viewModel: MainViewModel!
     var coordinator: MainCoordinator?
-    
-    init(viewModel: MainViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        viewModel = MainViewModel()
-        super.init(coder: coder)
-//        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +50,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: UITableViewDataSource {
+extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.movieList.count
     }
@@ -70,17 +59,14 @@ extension ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reusedID, for: indexPath) as! MovieCell
         let movie = viewModel.movieList[indexPath.row]
         let cellViewModel = MovieCellViewModel(movie)
-//        cellViewModel.listener = viewModel
-        cellViewModel.favoriteOnChange = {(name, favorite) in
-            self.viewModel.favoriteChange(on: name, with: favorite)
-        }
+        cellViewModel.listener = viewModel
         cell.configure(cellViewModel)
         return cell
     }
         
 }
 
-extension ViewController: UITableViewDelegate {
+extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = viewModel.movieList[indexPath.row]
         coordinator?.select(movie, indexPath: indexPath)

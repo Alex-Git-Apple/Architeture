@@ -7,27 +7,29 @@
 
 import Foundation
 
-class MovieCellViewModel {
+class MovieCellViewModel: ObservableObject {
     
+    @Published var likeButtonImage: String = ""
     var name: String
-    var favorite: Bool
-    var likeButtonImage: String {
-        favorite ? "heart.fill" : "heart"
+    var favorite: Bool {
+        didSet {
+            likeButtonImage = favorite ? "heart.fill" : "heart"
+        }
     }
+    
+    
     weak var listener: FavoriteListener?
     
     init(_ movie: Movie) {
         name = movie.name
         favorite = movie.favorite
+        likeButtonImage = favorite ? "heart.fill" : "heart"
     }
     
     func toggleFavorite() {
         favorite.toggle()
         listener?.favoriteChange(on: name, with: favorite)
-        favoriteOnChange?(name, favorite)
     }
-    
-    var favoriteOnChange: ((String, Bool) -> ())?
 }
 
 protocol FavoriteListener: AnyObject {
