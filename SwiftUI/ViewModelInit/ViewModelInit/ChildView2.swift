@@ -21,7 +21,7 @@ struct ChildView2: View {
     // The only correct way to inject a view model. @autoclosure can delay the init until the moment body() is invoked.
     // When the parent view redraw the child view, the view model can stay alive.
     init(viewModel: @autoclosure @escaping () -> ChildViewModel2) {
-        _viewModel = StateObject(wrappedValue: ChildViewModel2())
+        _viewModel = StateObject(wrappedValue: viewModel())
         print("Child View 2 init")
     }
     
