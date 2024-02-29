@@ -19,7 +19,7 @@ One interesting thing I learned is when `loadView()`/`viewDidLoad()` is triggere
   
   But, if we modify the view in ***MyViewController's init***. `viewDidLoad()` execute before assigning the viewModel.
 
-## Property observer
+## Property Observer
 During initialization, properties are typically set directly, bypassing any property observers.
 In the following example didSet takes effect after init()
   ```
